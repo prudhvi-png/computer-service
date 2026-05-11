@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Premium service inquiry platform for modern startups." />
+  <meta name="keywords" content="service inquiry, startup, web development, automation, design" />
+  <meta name="theme-color" content="#140726" />
+  <title>{% block title %}Nova Service Studio{% endblock %}</title>
+  <link rel="icon" href="{{ url_for('static', filename='img/favicon.svg') }}" type="image/svg+xml" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}" />
+</head>
+<body>
+  {% block content %}{% endblock %}
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% block content %}
+<nav class="navbar glass">
+  <div class="brand">Vasu <span>Computers</span></div>
+  <div class="nav-links"><a href="#services">Services</a><a href="#contact">Contact</a><a href="#partners">Partners</a></div>
+  <a href="#contact" class="btn btn-small">Contact Us</a>
+</nav>
+
+<header class="hero">
+  <div class="hero-content reveal">
+    <p class="eyebrow">Vasu Computer services</p>
+    <h1>Premium Computer service <span>for ALL BRANDS</span></h1>
+    <p>Launch your next big idea with elegant engineering and futuristic design.</p>
+    <a href="#contact" class="btn">Submit Inquiry</a>
+  </div>
+</header>
+
+<section id="services" class="cards reveal">
+  <article class="card glass"><img src="{{ url_for('static', filename='img/np-av.jpeg') }}"  alt="Network Logo" class="service-logo"><h3>Net protector Enterprise</h3><p>Authorised Partner</p></article>
+  <article class="card glass"><h3>Future-Ready Tech</h3><p>Scalable architecture with clean production standards.</p></article>
+  <article class="card glass"><h3>Premium Support</h3><p>Dedicated communication from brief to deployment.</p></article>
+</section>
+
+<section id="contact" class="contact-section reveal">
+  <h2>Send an Enquiry</h2>
+
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      {% for category, message in messages %}
+        <div class="alert {{ category }}">{{ message }}</div>
+      {% endfor %}
+    {% endif %}
+  {% endwith %}
+
+  <form method="POST" class="glass inquiry-form" id="inquiryForm" novalidate>
+    {{ form.hidden_tag() }}
+    <label>{{ form.full_name.label }} {{ form.full_name(placeholder='John Carter', required=true) }}</label>
+    <label>{{ form.phone_number.label }} {{ form.phone_number(placeholder='+1 555 111 2222', required=true) }}</label>
+    <label>{{ form.service_type.label }} {{ form.service_type(required=true) }}</label>
+    <label>{{ form.message.label }} {{ form.message(placeholder='Tell us about your project...') }}</label>
+    <div class="hp">{{ form.website }}</div>
+    <button type="submit" class="btn" id="submitBtn">{{ form.submit.label.text }}</button>
+  </form>
+</section>
+
+<footer class="footer">
+  <p>© 2026 NovaService Studio · All rights reserved.</p>
+  <div class="socials"><a href="#">LinkedIn</a><a href="#">X</a><a href="#">Instagram</a></div>
+</footer>
+
+<div id="loader" class="loader hidden"><div class="spinner"></div></div>
+<div id="successModal" class="modal hidden">
+  <div class="glass modal-card">
+    <h3>Success</h3>
+    <p>Your inquiry was submitted.</p>
+    <button class="btn" id="closeModal">Close</button>
+  </div>
+</div>
+{% endblock %}
